@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -25,7 +25,8 @@ h2{color:#c9a84c;font-family:Georgia,serif;font-size:22px;text-transform:upperca
 p{color:#dde;line-height:1.8;font-size:15px;}
 .gold{color:#c9a84c;}
 .footer{text-align:center;padding:24px 20px;border-top:1px solid rgba(201,168,76,.15);color:#556;margin-top:40px;}
-img{max-width:100%;border-radius:8px;border:2px solid #c9a84c;display:block;margin-bottom:16px;}
+img.full{max-width:100%;border-radius:8px;border:2px solid #c9a84c;display:block;margin-bottom:16px;}
+img.archive-img{width:100%;border-radius:8px 8px 0 0;border:none;display:block;margin-bottom:0;max-height:400px;object-fit:contain;background:#0a1428;}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .check{color:#eef;font-size:15px;}
 .dove{font-size:20px;}
@@ -38,12 +39,19 @@ label{color:#aab;font-size:13px;font-weight:bold;display:block;margin-top:12px;}
 .success{text-align:center;padding:40px 20px;}
 .success .checkmark{font-size:48px;margin-bottom:16px;}
 .profile-row{display:flex;align-items:center;gap:14px;cursor:pointer;padding:18px 22px;}
-.profile-detail{display:none;padding:0 22px 20px;}
-.profile-detail.open{display:flex;gap:18px;}
 .profile-img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #c9a84c;flex-shrink:0;}
 .profile-img-large{width:120px;border-radius:8px;border:2px solid #c9a84c;flex-shrink:0;object-fit:cover;max-height:150px;}
 .initials{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2a3f7e,#3a5fae);border:2px solid #c9a84c;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#fff;flex-shrink:0;}
 .arrow{margin-left:auto;color:#c9a84c;font-size:18px;}
+.search-box{width:100%;padding:10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.4);border-radius:6px;color:#eef;font-size:15px;box-sizing:border-box;margin-bottom:20px;}
+.search-box::placeholder{color:#778;}
+.photo-card{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);border-radius:10px;margin-bottom:20px;overflow:hidden;}
+.photo-card.hidden{display:none;}
+.photo-meta{padding:14px 18px;}
+.photo-title{color:#eef;font-family:Georgia,serif;font-size:17px;margin:0;}
+.photo-date{background:#c9a84c;color:#1a2a5e;font-size:11px;font-weight:bold;border-radius:20px;padding:2px 10px;white-space:nowrap;}
+.photo-caption{color:#ccd;font-size:14px;margin-top:8px;line-height:1.6;}
+.photo-by{color:#778;font-size:12px;margin-top:8px;}
 </style>
 </head>
 <body>
@@ -53,23 +61,22 @@ label{color:#aab;font-size:13px;font-weight:bold;display:block;margin-top:12px;}
   <div class="dates">50th Reunion · September 2026</div>
 </div>
 <div class="tabs">
-  <button class="tab active" onclick="showTab('home')">Home</button>
-  <button class="tab" onclick="showTab('c76')">Class of 1976</button>
-  <button class="tab" onclick="showTab('sched')">Reunion Schedule</button>
-  <button class="tab" onclick="showTab('archive')">Digital Archive</button>
-  <button class="tab" onclick="showTab('activity')">Recent Activity</button>
-  <button class="tab" onclick="showTab('submissions')">Site Additions</button>
-  <button class="tab" onclick="showTab('attending')">Attending Reunion</button>
-  <button class="tab" onclick="showTab('memoriam')">In Memoriam</button>
+  <button class="tab active" onclick="showTab('home',this)">Home</button>
+  <button class="tab" onclick="showTab('c76',this)">Class of 1976</button>
+  <button class="tab" onclick="showTab('sched',this)">Reunion Schedule</button>
+  <button class="tab" onclick="showTab('archive',this)">Digital Archive</button>
+  <button class="tab" onclick="showTab('classphotos',this)">Class Photos</button>
+  <button class="tab" onclick="showTab('activity',this)">Recent Activity</button>
+  <button class="tab" onclick="showTab('submissions',this)">Site Additions</button>
+  <button class="tab" onclick="showTab('attending',this)">Attending Reunion</button>
+  <button class="tab" onclick="showTab('memoriam',this)">In Memoriam</button>
 </div>
 <div class="content">
 
   <div id="home" class="section active">
-    <h2>Welcome Class of 1976!</h2>
+    <h2>Welcome, Class of 1976!</h2>
     <div class="divider"><span></span><i></i><span></span></div>
-    <p>Congratulations. We're delighted you could make it. As a well-known science writer once noted, for you to be here now, trillons of drifting atoms had somehow to assemble in a curiously obliging manner. It's an arrangement so specialized and particuilar that it has never been tried before and will only exist this once.<br/><br/>Fifty years is a fleeting glimmer but to us as individuals it's been a lifetime - educations, graduations, partners, moves, families, births, celebrations, separations, illnesses, deaths, jobs, careers, travel, holidays, economic downturns, financial crises, pandemics, social unrest, wars, and reunions. The journey is its own reward. We look forward to getting back together September 18-19. Please attend if you’re able.<br/><br/>  
-
-We created this website to provide a digital archive, a forum for updates, discussion, and photos. Please use the “Site Additions” tab to submit all of the above. We’ll get them posted as soon as possible.</p>
+    <p>Congratulations. We're delighted you could make it. As a well-known science writer once noted, for you to be here now, trillions of drifting atoms had somehow to assemble in a curiously obliging manner. It's an arrangement so specialized and particular that it has never been tried before and will only exist this once.<br/><br/>Fifty years is a fleeting glimmer but to us as individuals it's been a lifetime — educations, graduations, partners, moves, families, births, celebrations, separations, illnesses, deaths, jobs, careers, travel, holidays, economic downturns, financial crises, pandemics, social unrest, wars, and reunions. The journey is its own reward. We look forward to getting back together September 18-19. Please attend if you're able.<br/><br/>We created this website to provide a digital archive and a forum for updates, discussion, and photos. Please use the "Site Additions" tab to submit all of the above. We'll get them posted as soon as possible.</p>
     <div class="card" style="margin-top:24px;">
       <h3 class="gold" style="font-family:Georgia,serif;margin-bottom:8px;">Save the Date</h3>
       <p><strong>September 18-19, 2026</strong><br/>Cincinnati Country Day School · 6905 Given Road · Cincinnati, OH 45243</p>
@@ -79,8 +86,8 @@ We created this website to provide a digital archive, a forum for updates, discu
   <div id="c76" class="section">
     <h2>Class of 1976</h2>
     <div class="divider"><span></span><i></i><span></span></div>
-    <img src="std01.jpg" alt="Save the Date"/>
-    <img src="std03.jpg" alt="Weekend Schedule"/>
+    <img class="full" src="std01.jpg" alt="Save the Date"/>
+    <img class="full" src="std03.jpg" alt="Weekend Schedule"/>
   </div>
 
   <div id="sched" class="section">
@@ -102,17 +109,75 @@ We created this website to provide a digital archive, a forum for updates, discu
   <div id="archive" class="section">
     <h2>Digital Archive</h2>
     <div class="divider"><span></span><i></i><span></span></div>
-    <p>Photographs and articles in <strong class="gold">chronological order</strong>.</p>
-    <div class="card" style="margin-top:16px;padding:0;overflow:hidden;">
-      <img src="senior.jpg" alt="Senior Day 1976" style="border-radius:8px 8px 0 0;margin-bottom:0;border:none;"/>
-      <div style="padding:14px 18px;">
+    <p>Photographs in <strong class="gold">chronological order</strong>. Search by name to find photos of a specific person.</p>
+    <input class="search-box" type="text" id="archive-search" placeholder="Search by name, e.g. Mark Lanier..." oninput="filterArchive()"/>
+
+    <div class="photo-card" data-keywords="may festival programs 1968 collating">
+      <img class="archive-img" src="may_festival-1968.jpg" alt="Collating May Festival Programs"/>
+      <div class="photo-meta">
         <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center;">
-          <h3 style="color:#eef;font-family:Georgia,serif;">Senior Day 1976</h3>
-          <span style="background:#c9a84c;color:#1a2a5e;font-size:11px;font-weight:bold;border-radius:20px;padding:2px 10px;">May 1976</span>
+          <h3 class="photo-title">May Festival Program Stuffing</h3>
+          <span class="photo-date">1968</span>
         </div>
-        <p style="color:#778;font-size:12px;margin-top:8px;">Posted by <strong style="color:#aab;">Site Administrator</strong> · 2026-03-03</p>
+        <p class="photo-caption">Collating May Festival Programs</p>
+        <p class="photo-by">Posted by <strong style="color:#aab;">Site Administrator</strong> · 2026-03-03</p>
       </div>
     </div>
+
+    <div class="photo-card" data-keywords="senior day 1976">
+      <img class="archive-img" src="senior.jpg" alt="Senior Day 1976"/>
+      <div class="photo-meta">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center;">
+          <h3 class="photo-title">Senior Day 1976</h3>
+          <span class="photo-date">May 1976</span>
+        </div>
+        <p class="photo-by">Posted by <strong style="color:#aab;">Site Administrator</strong> · 2026-03-03</p>
+      </div>
+    </div>
+
+    <div class="photo-card" data-keywords="michael barach keith kerman mark lanier student council 1975">
+      <img class="archive-img" src="mike_keith_mark_1976.jpg" alt="Student Council 1975"/>
+      <div class="photo-meta">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center;">
+          <h3 class="photo-title">Student Council</h3>
+          <span class="photo-date">1975</span>
+        </div>
+        <p class="photo-caption">Michael Barach, Keith Kerman, Mark Lanier</p>
+        <p class="photo-by">Posted by <strong style="color:#aab;">Site Administrator</strong> · 2026-03-03</p>
+      </div>
+    </div>
+
+    <div class="photo-card" data-keywords="david walsh ben lowenthal mark lanier robert plummer 1976">
+      <img class="archive-img" src="mark_ben_1976.jpg" alt="David Walsh Ben Lowenthal Mark Lanier Robert Plummer"/>
+      <div class="photo-meta">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center;">
+          <h3 class="photo-title">Classmates 1976</h3>
+          <span class="photo-date">1976</span>
+        </div>
+        <p class="photo-caption">David Walsh, Ben Lowenthal, Mark Lanier, Robert Plummer</p>
+        <p class="photo-by">Posted by <strong style="color:#aab;">Site Administrator</strong> · 2026-03-03</p>
+      </div>
+    </div>
+
+    <div class="photo-card" data-keywords="mark lanier cafeteria 1976">
+      <img class="archive-img" src="mark_cafeteria.jpg" alt="Mark Lanier in the CCDS Cafeteria"/>
+      <div class="photo-meta">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center;">
+          <h3 class="photo-title">Mark Lanier in the CCDS Cafeteria</h3>
+          <span class="photo-date">1976</span>
+        </div>
+        <p class="photo-caption">Mark Lanier in the CCDS Cafeteria</p>
+        <p class="photo-by">Posted by <strong style="color:#aab;">Site Administrator</strong> · 2026-03-03</p>
+      </div>
+    </div>
+
+    <p id="no-results" style="display:none;color:#aab;font-style:italic;text-align:center;">No photos found for that search.</p>
+  </div>
+
+  <div id="classphotos" class="section">
+    <h2>Class Photos</h2>
+    <div class="divider"><span></span><i></i><span></span></div>
+    <p style="color:#aab;font-style:italic;">Class photos coming soon. Use the Site Additions tab to submit photos for posting here.</p>
   </div>
 
   <div id="activity" class="section">
@@ -202,17 +267,33 @@ We created this website to provide a digital archive, a forum for updates, discu
   <div style="font-size:12px;">ccds1976.org · 6905 Given Road, Cincinnati OH 45243</div>
 </div>
 <script>
-function showTab(id){
+function showTab(id,el){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  el.classList.add('active');
 }
 function toggleProfile(id){
   var detail=document.getElementById(id+'-detail');
   var arrow=document.getElementById(id+'-arrow');
   if(detail.style.display==='none'){detail.style.display='block';arrow.textContent='▲';}
   else{detail.style.display='none';arrow.textContent='▼';}
+}
+function filterArchive(){
+  var q=document.getElementById('archive-search').value.toLowerCase().trim();
+  var cards=document.querySelectorAll('.photo-card');
+  var found=0;
+  cards.forEach(function(card){
+    var keywords=card.getAttribute('data-keywords')||'';
+    var title=card.querySelector('.photo-title')?card.querySelector('.photo-title').textContent.toLowerCase():'';
+    var caption=card.querySelector('.photo-caption')?card.querySelector('.photo-caption').textContent.toLowerCase():'';
+    if(!q||keywords.includes(q)||title.includes(q)||caption.includes(q)){
+      card.classList.remove('hidden');found++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  document.getElementById('no-results').style.display=(found===0&&q)?'block':'none';
 }
 async function submitForm(){
   var name=document.getElementById('sub-name').value.trim();
